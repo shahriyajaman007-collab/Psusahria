@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+=====================================================================
+  STUDENT INFORMATION — EDIT THIS SECTION
+=====================================================================
+  This is your personal website. Everything you need to change is
+  marked with a comment that starts with  EDIT:
+  Use Ctrl+F (Cmd+F on Mac) and search for   EDIT:   to jump between them.
+
+  QUICK MAP — where each thing lives in this file
+  ---------------------------------------------------------------
+  1.  Page title + SEO / social preview ....... right below this block
+  2.  Name, program, headline, photo .......... HERO section
+  3.  Biography and goals ..................... ABOUT section
+  4.  Schools and degrees ..................... EDUCATION section
+  5.  Skill badges ............................ SKILLS section
+  6.  Projects ................................ PROJECTS section
+  7.  Jobs and internships .................... EXPERIENCE section
+  8.  Research (optional) ..................... RESEARCH section
+  9.  Publications (optional) ................. PUBLICATIONS section
+  10. Certifications and awards ............... CREDENTIALS section
+  11. Volunteering and leadership ............. INVOLVEMENT section
+  12. Resume file link ........................ RESUME section
+  13. Email, phone, social links .............. CONTACT section
+
+  THREE RULES THAT KEEP THIS FILE WORKING
+  ---------------------------------------------------------------
+  A. To hide a whole section you do not need (Research, Publications,
+     Awards...), add the word  hidden  to its opening tag:
+         <section id="research" hidden>
+     The navigation link for it disappears automatically.
+
+  B. To hide one social or profile link, set its href to "#" :
+         <a href="#" data-optional ...>
+     It will be removed from the page automatically. Empty icons
+     never show up.
+
+  C. To add another project, job, degree, or publication, copy the
+     block between the  COPY THIS BLOCK  comments and paste it
+     directly underneath, then edit the copy.
+
+  FILES AND FOLDERS TO CREATE (all optional — the site works without them)
+  ---------------------------------------------------------------
+     index.html              <- this file, in the top level of your repo
+     assets/profile.jpg      <- your photo, square, about 600x600
+     assets/resume.pdf       <- your resume
+     assets/project-1.jpg    <- project screenshots, about 1200x750
+     assets/project-2.jpg
+     assets/project-3.jpg
+     assets/og-image.jpg     <- 1200x630 preview image for social sharing
+
+  If a photo is missing the page still looks finished — a clean
+  placeholder is shown instead of a broken image icon.
+
+  PUBLISHING ON GITHUB PAGES
+  ---------------------------------------------------------------
+  1. Create a repository named  yourusername.github.io
+     (or any name, e.g. portfolio).
+  2. Upload index.html and your assets folder to the main branch.
+  3. Repository > Settings > Pages > Build and deployment.
+     Source: Deploy from a branch. Branch: main, folder: / (root). Save.
+  4. Wait about a minute, then open
+        https://yourusername.github.io
+     or, for a named repository,
+        https://yourusername.github.io/portfolio/
+  5. Every file path in this template is relative (assets/profile.jpg,
+     never /assets/profile.jpg), so both URLs work without changes.
+=====================================================================
+-->
+
+<!-- EDIT: page title. This is what shows in the browser tab and in Google results. -->
+<title>[Student Name] — [Degree Program] | Personal Website</title>
+
+<!-- EDIT: one or two sentences describing yourself for search engines. -->
+<meta name="description" content="[Student Name] is a [Degree Program] student at Pacific States University in [City, State], focused on [your field]. Projects, experience, and resume.">
+<meta name="author" content="[Student Name]">
+
+<!-- EDIT: replace with your published address once GitHub Pages is live. -->
+<link rel="canonical" href="https://yourusername.github.io/">
+
+<!-- EDIT: social sharing preview (LinkedIn, Facebook). -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="[Student Name] — [Degree Program]">
+<meta property="og:description" content="Personal academic and professional portfolio of [Student Name], [Degree Program] student at Pacific States University.">
+<meta property="og:url" content="https://yourusername.github.io/">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:site_name" content="[Student Name]">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="[Student Name] — [Degree Program]">
+<meta name="twitter:description" content="Personal academic and professional portfolio of [Student Name].">
+<meta name="twitter:image" content="assets/og-image.jpg">
+
+<meta name="theme-color" content="#0E2033">
+
+<!-- EDIT (optional): a small icon for the browser tab, e.g. assets/favicon.png -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E2033'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='%23D9AE63' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+/* =================================================================
+   1. DESIGN TOKENS
+   Colors, type, and spacing live here. Change a value once and the
+   whole site follows. Dark mode is the second block.
+   ================================================================= */
+:root{
+  --bg:#F1F4F7;
+  --surface:#FFFFFF;
+  --surface-2:#E7ECF1;
+  --ink:#0E2033;
+  --body:#3F4E5E;
+  --muted:#68788A;
+  --line:#D6DEE6;
+  --line-strong:#BCC8D4;
+  --accent:#8A6224;
+  --accent-ink:#6E4D18;
+  --accent-soft:#F3EADA;
+  --focus:#1D6FB8;
+  --shadow-sm:0 1px 2px rgba(14,32,51,.06);
+  --shadow-md:0 10px 30px -18px rgba(14,32,51,.38);
+
+  --font-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+
+  --wrap:1080px;
+  --gutter:clamp(1.25rem,4vw,2.5rem);
+  --section-y:clamp(3.5rem,8vw,6rem);
+  --radius:14px;
+  --radius-sm:9px;
+  --nav-h:66px;
+}
+html[data-theme="dark"]{
+  --bg:#09141E;
+  --surface:#0F1F2C;
+  --surface-2:#16293A;
+  --ink:#E9F0F6;
+  --body:#B4C3D0;
+  --muted:#8496A6;
+  --line:#1F3446;
+  --line-strong:#2C4358;
+  --accent:#D9AE63;
+  --accent-ink:#E7C78C;
+  --accent-soft:#1A2C3C;
+  --focus:#82B8E6;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  --shadow-md:0 14px 34px -20px rgba(0,0,0,.85);
+}
+
+/* =================================================================
+   2. BASE
+   ================================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--body);
+  font-family:var(--font-ui);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  color:var(--ink);
+  line-height:1.18;
+  margin:0 0 .5rem;
+  font-weight:600;
+  letter-spacing:-.01em;
+}
+h1{font-size:clamp(2.4rem,6.4vw,3.9rem);font-weight:700;letter-spacing:-.022em}
+h2{font-size:clamp(1.7rem,3.6vw,2.3rem)}
+h3{font-size:1.16rem;font-weight:600}
+h4{font-size:1rem;font-weight:600}
+p{margin:0 0 1rem;max-width:68ch}
+a{color:var(--accent-ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--ink)}
+img{max-width:100%;display:block}
+ul{margin:0;padding:0}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+::selection{background:var(--accent-soft);color:var(--ink)}
+
+:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--ink);color:#fff;padding:.7rem 1.1rem;border-radius:0 0 8px 0;
+}
+.skip:focus{left:0}
+
+/* =================================================================
+   3. NAVIGATION
+   ================================================================= */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);
+  background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:saturate(150%) blur(10px);
+  -webkit-backdrop-filter:saturate(150%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;gap:1rem;
+  min-height:var(--nav-h);
+}
+.brand{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:var(--font-display);font-weight:700;color:var(--ink);
+  text-decoration:none;font-size:1.02rem;letter-spacing:-.01em;margin-right:auto;
+}
+.brand-mark{
+  width:30px;height:30px;border-radius:8px;flex:none;
+  background:var(--ink);color:var(--bg);
+  display:grid;place-items:center;font-size:.82rem;letter-spacing:.02em;
+}
+html[data-theme="dark"] .brand-mark{background:var(--accent);color:#0B1723}
+.nav-links{display:flex;align-items:center;gap:.15rem;list-style:none}
+.nav-links a{
+  display:block;padding:.42rem .62rem;border-radius:7px;
+  font-size:.925rem;color:var(--body);text-decoration:none;font-weight:500;
+  transition:background .15s ease,color .15s ease;
+}
+.nav-links a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-links a[aria-current="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent)}
+.nav-tools{display:flex;align-items:center;gap:.35rem}
+.icon-btn{
+  width:38px;height:38px;flex:none;
+  display:grid;place-items:center;
+  background:transparent;border:1px solid var(--line);border-radius:9px;
+  color:var(--ink);cursor:pointer;
+  transition:background .15s ease,border-color .15s ease;
+}
+.icon-btn:hover{background:var(--surface-2);border-color:var(--line-strong)}
+.icon-btn svg{width:18px;height:18px}
+.theme-btn .moon{display:none}
+html[data-theme="dark"] .theme-btn .sun{display:none}
+html[data-theme="dark"] .theme-btn .moon{display:block}
+.menu-btn{display:none}
+
+@media (max-width:920px){
+  .menu-btn{display:grid}
+  .nav-links{
+    position:absolute;left:0;right:0;top:100%;
+    flex-direction:column;align-items:stretch;gap:.15rem;
+    padding:.75rem var(--gutter) 1.1rem;
+    background:var(--surface);border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow-md);
+  }
+  .nav-links[data-open="false"]{display:none}
+  .nav-links a{padding:.62rem .55rem;font-size:1rem}
+  .nav-links a[aria-current="true"]{box-shadow:inset 2px 0 0 var(--accent)}
+}
+
+/* =================================================================
+   4. SECTION SHELL
+   ================================================================= */
+.section{padding-block:var(--section-y);scroll-margin-top:calc(var(--nav-h) + 14px)}
+.section + .section{border-top:1px solid var(--line)}
+.section-head{margin-bottom:2.25rem;max-width:62ch}
+.section-head h2{margin-bottom:.55rem}
+.section-head h2::after{
+  content:"";display:block;width:52px;height:2px;
+  background:var(--accent);margin-top:.8rem;
+}
+.section-note{color:var(--muted);margin:0;font-size:1rem}
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:1.4rem 1.5rem;
+  box-shadow:var(--shadow-sm);
+}
+.grid{display:grid;gap:1.1rem}
+@media (min-width:720px){
+  .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (min-width:1000px){
+  .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+.meta{color:var(--muted);font-size:.9rem;margin:0}
+.stack-sm > * + *{margin-top:.35rem}
+.bullets{list-style:none;margin:.7rem 0 0}
+.bullets li{position:relative;padding-left:1.05rem;margin-bottom:.4rem;font-size:.97rem}
+.bullets li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:5px;height:5px;border-radius:50%;background:var(--accent);
+}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;list-style:none}
+.tag{
+  font-size:.8rem;line-height:1;padding:.42rem .6rem;border-radius:999px;
+  background:var(--surface-2);color:var(--body);border:1px solid var(--line);
+}
+
+/* =================================================================
+   5. BUTTONS
+   ================================================================= */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.72rem 1.15rem;border-radius:9px;
+  font-family:var(--font-ui);font-size:.95rem;font-weight:500;
+  text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn-primary:hover{background:var(--accent-ink);border-color:var(--accent-ink);color:var(--bg)}
+html[data-theme="dark"] .btn-primary{background:var(--accent);color:#0B1723;border-color:var(--accent)}
+html[data-theme="dark"] .btn-primary:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{background:var(--surface-2);color:var(--ink)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+
+/* =================================================================
+   6. HERO
+   ================================================================= */
+.hero{padding-block:clamp(3rem,7vw,5.25rem) var(--section-y)}
+.hero-grid{display:grid;gap:clamp(2rem,5vw,3.25rem);align-items:center}
+@media (min-width:860px){
+  .hero-grid{grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr)}
+}
+.hero-eyebrow{
+  font-family:var(--font-display);font-style:italic;
+  color:var(--accent-ink);font-size:1.05rem;margin:0 0 .5rem;
+}
+.hero h1{margin-bottom:.7rem}
+.hero-headline{
+  font-family:var(--font-display);font-size:clamp(1.15rem,2.4vw,1.4rem);
+  color:var(--ink);font-weight:400;margin:0 0 1rem;max-width:30ch;line-height:1.4;
+}
+.hero-intro{font-size:1.06rem;max-width:54ch}
+.facts{
+  display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;
+  list-style:none;margin:1.5rem 0 0;
+  padding-top:1.3rem;border-top:1px solid var(--line);
+}
+.facts li{display:flex;align-items:center;gap:.5rem;font-size:.93rem;color:var(--body)}
+.facts svg{width:16px;height:16px;color:var(--accent);flex:none}
+.facts a{color:var(--body);text-decoration:none}
+.facts a:hover{color:var(--ink);text-decoration:underline}
+
+.portrait{
+  position:relative;width:min(300px,78%);margin-inline:auto;
+  aspect-ratio:1/1;
+}
+@media (min-width:860px){ .portrait{width:100%;margin-inline:0} }
+.portrait::after{
+  content:"";position:absolute;inset:auto -14px -14px auto;
+  width:62%;height:62%;border:1px solid var(--accent);
+  border-radius:var(--radius);z-index:0;
+}
+.portrait img,.portrait .ph{
+  position:relative;z-index:1;
+  width:100%;height:100%;object-fit:cover;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  background:var(--surface-2);
+  box-shadow:var(--shadow-md);
+}
+.ph{
+  display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:600;color:var(--muted);
+}
+.ph-mono{font-size:clamp(2.5rem,7vw,3.6rem);letter-spacing:.04em;color:var(--accent)}
+.ph-label{font-size:.85rem;font-family:var(--font-ui);padding:0 1rem;text-align:center}
+
+.badge-line{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.83rem;color:var(--muted);margin-top:1rem;
+}
+.badge-line .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+
+/* =================================================================
+   7. TIMELINE (education + experience — real chronological order)
+   ================================================================= */
+.timeline{list-style:none;position:relative;padding-left:1.6rem}
+.timeline::before{
+  content:"";position:absolute;left:5px;top:.7rem;bottom:.7rem;
+  width:1px;background:var(--line-strong);
+}
+.timeline > li{position:relative;padding-bottom:2rem}
+.timeline > li:last-child{padding-bottom:0}
+.timeline > li::before{
+  content:"";position:absolute;left:-1.6rem;top:.62rem;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);
+}
+.entry-head{display:flex;flex-wrap:wrap;gap:.2rem 1rem;align-items:baseline}
+.entry-head h3{margin:0}
+.entry-date{
+  font-size:.87rem;color:var(--muted);margin-left:auto;white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.entry-sub{color:var(--ink);font-size:1rem;margin:.15rem 0 .3rem;font-weight:500}
+
+details.coursework{margin-top:.9rem;border-top:1px solid var(--line);padding-top:.8rem}
+details.coursework summary{
+  cursor:pointer;font-size:.92rem;color:var(--accent-ink);font-weight:500;
+  list-style:none;display:inline-flex;align-items:center;gap:.4rem;
+}
+details.coursework summary::-webkit-details-marker{display:none}
+details.coursework summary::before{content:"+";font-size:1.05rem;line-height:1}
+details.coursework[open] summary::before{content:"–"}
+details.coursework .tag-row{margin-top:.8rem}
+
+/* =================================================================
+   8. SKILLS
+   ================================================================= */
+.skill-group + .skill-group{margin-top:1.6rem}
+.skill-group h3{margin-bottom:.7rem}
+.skill-list{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+.skill{
+  font-size:.92rem;padding:.5rem .85rem;border-radius:8px;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink);
+  box-shadow:var(--shadow-sm);
+}
+
+/* =================================================================
+   9. PROJECTS
+   ================================================================= */
+.project{display:flex;flex-direction:column;padding:0;overflow:hidden;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.project:hover{border-color:var(--line-strong);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.project-media{aspect-ratio:16/10;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.project-media img,.project-media .ph{width:100%;height:100%;object-fit:cover;border-radius:0;border:0;box-shadow:none}
+.project-body{padding:1.3rem 1.4rem 1.45rem;display:flex;flex-direction:column;flex:1}
+.project-body h3{margin-bottom:.25rem}
+.project-role{font-size:.88rem;color:var(--muted);margin:0 0 .7rem}
+.project-body p{font-size:.97rem;margin-bottom:.4rem}
+.project-links{display:flex;gap:1rem;margin-top:auto;padding-top:1rem;list-style:none}
+.project-links a{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.9rem;font-weight:500;text-decoration:none;color:var(--accent-ink);
+}
+.project-links a:hover{text-decoration:underline;color:var(--ink)}
+.project-links svg{width:15px;height:15px}
+
+/* =================================================================
+   10. PUBLICATIONS + CREDENTIALS
+   ================================================================= */
+.pub-list{list-style:none}
+.pub-list > li{padding:1.3rem 0;border-bottom:1px solid var(--line)}
+.pub-list > li:first-child{padding-top:0}
+.pub-list > li:last-child{border-bottom:0;padding-bottom:0}
+.pub-title{font-family:var(--font-display);font-size:1.08rem;color:var(--ink);margin:0 0 .3rem;font-weight:600}
+.pub-authors{font-size:.95rem;margin:0 0 .2rem}
+.pub-venue{font-size:.95rem;color:var(--muted);margin:0 0 .5rem;font-style:italic}
+.pub-abstract{font-size:.95rem;margin:.6rem 0 0}
+.pub-links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:.7rem;list-style:none;font-size:.9rem}
+
+.cred{display:flex;gap:.9rem;align-items:flex-start}
+.cred-icon{
+  width:34px;height:34px;flex:none;border-radius:8px;
+  background:var(--accent-soft);color:var(--accent-ink);
+  display:grid;place-items:center;
+}
+.cred-icon svg{width:17px;height:17px}
+.cred h3{font-size:1.03rem}
+
+/* =================================================================
+   11. RESUME + CONTACT + FOOTER
+   ================================================================= */
+.panel{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:clamp(1.6rem,4vw,2.4rem);
+  box-shadow:var(--shadow-sm);
+}
+.panel h2::after{display:none}
+.contact-grid{display:grid;gap:2rem}
+@media (min-width:860px){.contact-grid{grid-template-columns:1.1fr .9fr;align-items:start}}
+.contact-list{list-style:none}
+.contact-list li + li{margin-top:.85rem}
+.contact-list a,.contact-list span{display:inline-flex;align-items:center;gap:.65rem;color:var(--body);text-decoration:none;font-size:1rem}
+.contact-list a:hover{color:var(--ink);text-decoration:underline}
+.contact-list svg{width:17px;height:17px;color:var(--accent);flex:none}
+.copy-btn{
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  font-family:var(--font-ui);font-size:.78rem;padding:.2rem .5rem;border-radius:6px;
+  cursor:pointer;margin-left:.4rem;
+}
+.copy-btn:hover{color:var(--ink);border-color:var(--line-strong)}
+.social-row{display:flex;flex-wrap:wrap;gap:.55rem;list-style:none;margin-top:1.4rem}
+.social{
+  width:42px;height:42px;display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);
+  color:var(--ink);text-decoration:none;transition:border-color .15s ease,background .15s ease;
+}
+.social:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+.social svg{width:19px;height:19px}
+
+.footer{border-top:1px solid var(--line);padding-block:2.2rem;font-size:.88rem;color:var(--muted)}
+.footer-inner{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;align-items:center}
+.footer a{color:var(--muted)}
+.footer .top-link{margin-left:auto;text-decoration:none}
+.footer .top-link:hover{color:var(--ink)}
+
+/* =================================================================
+   12. MOTION + PRINT
+   ================================================================= */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(12px);animation:rise .6s cubic-bezier(.22,.61,.36,1) forwards}
+  .reveal:nth-child(1){animation-delay:.05s}
+  .reveal:nth-child(2){animation-delay:.14s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+@media print{
+  .nav,.footer .top-link,.btn-row,.social-row,.copy-btn{display:none !important}
+  body{background:#fff;color:#000;font-size:11pt}
+  .card,.panel{box-shadow:none;border-color:#ccc;break-inside:avoid}
+  .section{padding-block:1.2rem}
+}
+</style>
+
+<script>
+/* Sets the saved theme before the page paints, so there is no flash of
+   the wrong colours. The rest of the JavaScript is at the end of the file. */
+(function () {
+  try {
+    var saved = localStorage.getItem("psu-portfolio-theme");
+    var system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", saved || system);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Icon set. These are drawn inline so the page loads no icon library.
+     You never need to edit this block. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 7 9-7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3Z"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v5a1.8 1.8 0 0 1-1.8 1.8H5A1.8 1.8 0 0 1 3.2 19V7.8A1.8 1.8 0 0 1 5 6h5"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8a10.2 10.2 0 0 0-3.2 19.9c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 12 1.8Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.8v1.7h.1a4.2 4.2 0 0 1 3.8-2c4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21h-4V9Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M17.2 3h3.3l-7.2 8.2L21.8 21h-6.6l-5.2-6.4L4.1 21H.8l7.7-8.8L.4 3H7l4.7 5.9L17.2 3Zm-1.2 16h1.8L8.1 4.8H6.2L16 19Z"/></symbol>
+    <symbol id="i-scholar" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 8.3l4 2.3V17c0 .3.1.5.4.7A13.7 13.7 0 0 0 12 19.5a13.7 13.7 0 0 0 6.6-1.8c.3-.2.4-.4.4-.7v-6.4l2-1.1V16h2V8.3L12 2Zm5 14.4a12 12 0 0 1-5 1.1 12 12 0 0 1-5-1.1v-4.7l5 2.9 5-2.9v4.7Z"/></symbol>
+    <symbol id="i-orcid" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8A10.2 10.2 0 1 0 22.2 12 10.2 10.2 0 0 0 12 1.8ZM8.3 17H6.7V8.6h1.6V17Zm-.8-9.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM14 17h-3.3V8.6h3.4c2.8 0 4.2 1.9 4.2 4.2S16.8 17 14 17Zm-.1-6.9h-1.6v5.4h1.5c2 0 2.9-1.2 2.9-2.7s-.9-2.7-2.8-2.7Z"/></symbol>
+    <symbol id="i-rg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8A10.2 10.2 0 1 0 22.2 12 10.2 10.2 0 0 0 12 1.8Zm-1.3 15.3H8.9V7.2h3.4c2 0 3.3 1.1 3.3 2.9a2.7 2.7 0 0 1-2 2.7l2.6 4.3h-2.1l-2.3-4h-1.1v4Zm0-5.5h1.3c1 0 1.6-.5 1.6-1.4s-.6-1.4-1.6-1.4h-1.3v2.8Z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a15 15 0 0 1 0 18.4 15 15 0 0 1 0-18.4Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4 19.5h16"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-6.2 10-6.2S22 12 22 12s-3.6 6.2-10 6.2S2 12 2 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.8-1.3 7 4.8-2.6 4.8 2.6-1.3-7"/></symbol>
+    <symbol id="i-cert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 9h6M7 12.5h4"/><circle cx="17" cy="12" r="2"/></symbol>
+    <symbol id="i-hands" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.3-7.5-9.4A4.1 4.1 0 0 1 12 8.6a4.1 4.1 0 0 1 7.5 2.5c0 5.1-7.5 9.4-7.5 9.4Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="8.6" cy="9.6" r="1.6"/><path d="m3.6 17 4.9-4.6 3.4 3 3-2.6 5.5 4.8"/></symbol>
+  </defs>
+</svg>
+
+<!-- ================================================================
+     NAVIGATION
+     A link disappears by itself if its section is hidden.
+     ================================================================ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <!-- EDIT: your initials and the name shown in the bar -->
+    <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">SN</span> [Student Name]</a>
+
+    <nav id="primary-nav" aria-label="Sections">
+      <ul class="nav-links" id="nav-list" data-open="false">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-tools">
+      <button class="icon-btn theme-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+        <svg class="sun" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+        <svg class="moon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-list" aria-label="Open menu">
+        <svg class="open" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="section hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <!-- EDIT: a short greeting line -->
+      <p class="hero-eyebrow">Hello, I'm [First Name]</p>
+
+      <!-- EDIT: your full name -->
+      <h1>[Student Name]</h1>
+
+      <!-- EDIT: your headline — program, interest, direction -->
+      <p class="hero-headline">[Degree Program] student at Pacific States University, working toward [career direction].</p>
+
+      <!-- EDIT: two or three sentences about what you do and what you are looking for -->
+      <p class="hero-intro">I study [field] with a focus on [area of interest]. Right now I am building [what you are building or learning] and looking for [internships / full-time roles / research opportunities] starting [term, year].</p>
+
+      <!-- EDIT: the quick facts under your intro. Delete any line you do not want. -->
+      <ul class="facts">
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-cap"/></svg> Pacific States University</li>
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-pin"/></svg> [City, State]</li>
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-mail"/></svg> <a href="mailto:you@example.com">you@example.com</a></li>
+      </ul>
+
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#projects">View my work</a>
+        <!-- EDIT: put your resume at assets/resume.pdf -->
+        <a class="btn btn-ghost" href="assets/resume.pdf" download>
+          <svg aria-hidden="true" focusable="false"><use href="#i-download"/></svg> Download resume
+        </a>
+      </div>
+
+      <!-- Keep this line. It makes clear the site is personal, not institutional. -->
+      <p class="badge-line"><span class="dot" aria-hidden="true"></span> Personal Website | Pacific States University</p>
+    </div>
+
+    <div class="portrait reveal">
+      <!-- EDIT: save your photo as assets/profile.jpg. If the file is missing,
+           your initials are shown instead — nothing looks broken. -->
+      <img src="assets/profile.jpg" alt="Portrait of [Student Name]" width="600" height="600"
+           data-fallback="mono" data-initials="SN">
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     ABOUT
+     ================================================================ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About</h2>
+      <p class="section-note">A short introduction for anyone deciding whether to reach out.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Biography</h3>
+        <!-- EDIT: three or four sentences. Write as you would speak. -->
+        <p>I am a [Degree Program] student at Pacific States University in [City, State]. I came to [field] through [what got you started], and I have spent the last [number] years learning to [core thing you can do].</p>
+        <p>Outside class I work on [projects, a job, a club] where I handle [responsibility]. I like problems that sit between [area A] and [area B].</p>
+      </div>
+
+      <div class="card">
+        <h3>Academic background</h3>
+        <!-- EDIT: what you have studied and what you are strongest at -->
+        <p>My coursework covers [subject], [subject], and [subject]. My strongest work has been in [course or topic], where I [what you did or built].</p>
+        <p>Before PSU I completed [previous degree or diploma] at [institution].</p>
+      </div>
+
+      <div class="card">
+        <h3>Career interests and goals</h3>
+        <!-- EDIT: be concrete. Naming a role and a timeframe helps recruiters. -->
+        <ul class="bullets">
+          <li>Seeking [role type] roles in [industry], starting [term, year]</li>
+          <li>Building depth in [skill or technology]</li>
+          <li>Long term: [where you want to be in five years]</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Outside the classroom</h3>
+        <!-- EDIT: a few genuine interests. Two or three is plenty. -->
+        <p>[Interest], [interest], and [interest]. I also [something you do regularly — a sport, a language, volunteering, a side business].</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     EDUCATION
+     ================================================================ -->
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Education</h2>
+      <p class="section-note">Most recent first.</p>
+    </div>
+
+    <ul class="timeline">
+      <!-- COPY THIS BLOCK to add another degree ========================= -->
+      <li>
+        <div class="card">
+          <div class="entry-head">
+            <h3>Pacific States University</h3>
+            <!-- EDIT: start and expected graduation -->
+            <span class="entry-date">2025 – 2027 (expected)</span>
+          </div>
+          <!-- EDIT: degree and major -->
+          <p class="entry-sub">Master of Science in Computer Science — [Major or concentration]</p>
+          <!-- EDIT: location, and GPA only if you want to show it. Delete the GPA if not. -->
+          <p class="meta">Los Angeles, California · GPA [0.00] / 4.00</p>
+
+          <ul class="bullets">
+            <!-- EDIT: academic achievements. Delete the list if you have none yet. -->
+            <li>[Dean's list, scholarship, honors, or a notable academic result]</li>
+            <li>[Capstone or thesis topic, if you have one]</li>
+          </ul>
+
+          <details class="coursework">
+            <summary>Relevant coursework</summary>
+            <!-- EDIT: your course names -->
+            <ul class="tag-row">
+              <li class="tag">[Course name]</li>
+              <li class="tag">[Course name]</li>
+              <li class="tag">[Course name]</li>
+              <li class="tag">[Course name]</li>
+              <li class="tag">[Course name]</li>
+            </ul>
+          </details>
+        </div>
+      </li>
+      <!-- END OF BLOCK ================================================== -->
+
+      <li>
+        <div class="card">
+          <div class="entry-head">
+            <h3>[Previous University or College]</h3>
+            <span class="entry-date">[2019 – 2023]</span>
+          </div>
+          <p class="entry-sub">[Bachelor of Science in Field]</p>
+          <p class="meta">[City, Country]</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================
+     SKILLS
+     Keep only what you can actually demonstrate in an interview.
+     ================================================================ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <p class="section-note">Tools and abilities I use in coursework, projects, and work.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="skill-group">
+          <h3>Programming and software</h3>
+          <!-- EDIT: delete what does not apply, add what does -->
+          <ul class="skill-list">
+            <li class="skill">[Python]</li>
+            <li class="skill">[JavaScript]</li>
+            <li class="skill">[Java]</li>
+            <li class="skill">[SQL]</li>
+            <li class="skill">[Git and GitHub]</li>
+            <li class="skill">[Excel]</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Data, cloud, and systems</h3>
+          <ul class="skill-list">
+            <li class="skill">[MySQL]</li>
+            <li class="skill">[Power BI]</li>
+            <li class="skill">[AWS]</li>
+            <li class="skill">[Networking]</li>
+            <li class="skill">[Cybersecurity fundamentals]</li>
+            <li class="skill">[Machine learning]</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="skill-group">
+          <h3>Professional</h3>
+          <ul class="skill-list">
+            <li class="skill">Communication</li>
+            <li class="skill">Teamwork</li>
+            <li class="skill">Leadership</li>
+            <li class="skill">Problem solving</li>
+            <li class="skill">Project management</li>
+            <li class="skill">Technical writing</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <!-- EDIT: language and level, e.g. English (fluent) -->
+          <ul class="skill-list">
+            <li class="skill">[English — fluent]</li>
+            <li class="skill">[Language — conversational]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PROJECTS
+     ================================================================ -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <p class="section-note">Work I built, with links to the code where it is public.</p>
+    </div>
+
+    <div class="grid grid-3">
+
+      <!-- COPY THIS BLOCK to add another project ======================== -->
+      <article class="card project">
+        <div class="project-media">
+          <!-- EDIT: assets/project-1.jpg — or delete this whole project-media div
+               if the project has no image. -->
+          <img src="assets/project-1.jpg" alt="Screenshot of [Project Title]" loading="lazy"
+               width="1200" height="750" data-fallback="label">
+        </div>
+        <div class="project-body">
+          <!-- EDIT: title, your role, dates -->
+          <h3>[Project Title]</h3>
+          <p class="project-role">[Your role] · [Month Year – Month Year]</p>
+          <!-- EDIT: what it does and what problem it solves -->
+          <p>[One or two sentences: what the project does, who it is for, and the result — a number, a grade, a user count, anything concrete.]</p>
+          <ul class="tag-row">
+            <li class="tag">[Technology]</li>
+            <li class="tag">[Technology]</li>
+            <li class="tag">[Technology]</li>
+          </ul>
+          <!-- EDIT: links. Set href to "#" to remove a link you do not have. -->
+          <ul class="project-links">
+            <li><a href="https://github.com/yourusername/project" data-optional><svg aria-hidden="true" focusable="false"><use href="#i-github"/></svg> Code</a></li>
+            <li><a href="https://yourusername.github.io/project/" data-optional><svg aria-hidden="true" focusable="false"><use href="#i-link"/></svg> Live demo</a></li>
+          </ul>
+        </div>
+      </article>
+      <!-- END OF BLOCK ================================================== -->
+
+      <article class="card project">
+        <div class="project-media">
+          <img src="assets/project-2.jpg" alt="Screenshot of [Project Title]" loading="lazy"
+               width="1200" height="750" data-fallback="label">
+        </div>
+        <div class="project-body">
+          <h3>[Project Title]</h3>
+          <p class="project-role">[Your role] · [Month Year]</p>
+          <p>[What you built and what came out of it.]</p>
+          <ul class="tag-row">
+            <li class="tag">[Technology]</li>
+            <li class="tag">[Technology]</li>
+          </ul>
+          <ul class="project-links">
+            <li><a href="https://github.com/yourusername/project" data-optional><svg aria-hidden="true" focusable="false"><use href="#i-github"/></svg> Code</a></li>
+            <li><a href="#" data-optional><svg aria-hidden="true" focusable="false"><use href="#i-link"/></svg> Live demo</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card project">
+        <div class="project-media">
+          <img src="assets/project-3.jpg" alt="Screenshot of [Project Title]" loading="lazy"
+               width="1200" height="750" data-fallback="label">
+        </div>
+        <div class="project-body">
+          <h3>[Project Title]</h3>
+          <p class="project-role">[Team of 4] · [Month Year]</p>
+          <p>[A course project counts. Say what you owned within the team.]</p>
+          <ul class="tag-row">
+            <li class="tag">[Technology]</li>
+            <li class="tag">[Technology]</li>
+          </ul>
+          <ul class="project-links">
+            <li><a href="https://github.com/yourusername/project" data-optional><svg aria-hidden="true" focusable="false"><use href="#i-github"/></svg> Code</a></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     EXPERIENCE
+     Write results, not duties. "Cut processing time by 30%" beats
+     "responsible for processing".
+     ================================================================ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <p class="section-note">Roles, internships, and campus work.</p>
+    </div>
+
+    <ul class="timeline">
+      <!-- COPY THIS BLOCK to add another role =========================== -->
+      <li>
+        <div class="card">
+          <div class="entry-head">
+            <!-- EDIT: job title -->
+            <h3>[Job Title]</h3>
+            <!-- EDIT: dates, or "Present" if current -->
+            <span class="entry-date">[Jun 2025 – Present]</span>
+          </div>
+          <!-- EDIT: employer and location -->
+          <p class="entry-sub">[Company or Organization]</p>
+          <p class="meta">[City, State] · [Part-time / Internship / Full-time]</p>
+
+          <ul class="bullets">
+            <!-- EDIT: two to four achievements, each with a number where possible -->
+            <li>[Achievement with a measurable result — a percentage, a dollar figure, a time saved, a number of users.]</li>
+            <li>[Something you built, fixed, or improved, and the effect it had.]</li>
+            <li>[A responsibility that shows judgment or ownership.]</li>
+          </ul>
+
+          <ul class="tag-row">
+            <li class="tag">[Tool used]</li>
+            <li class="tag">[Tool used]</li>
+          </ul>
+        </div>
+      </li>
+      <!-- END OF BLOCK ================================================== -->
+
+      <li>
+        <div class="card">
+          <div class="entry-head">
+            <h3>[Job Title]</h3>
+            <span class="entry-date">[2023 – 2025]</span>
+          </div>
+          <p class="entry-sub">[Company or Organization]</p>
+          <p class="meta">[City, Country]</p>
+          <ul class="bullets">
+            <li>[Achievement.]</li>
+            <li>[Achievement.]</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================
+     RESEARCH  (optional)
+     No research yet? Add  hidden  to the section tag below:
+         <section class="section" id="research" hidden>
+     ================================================================ -->
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Research</h2>
+      <p class="section-note">Questions I am working on and where I have contributed.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Research interests</h3>
+        <!-- EDIT: two or three areas, stated plainly -->
+        <ul class="bullets">
+          <li>[Research area — one line on why it interests you]</li>
+          <li>[Research area]</li>
+          <li>[Research area]</li>
+        </ul>
+      </div>
+
+      <!-- COPY THIS BLOCK for another research project ================== -->
+      <div class="card">
+        <div class="entry-head">
+          <h3>[Research Project Title]</h3>
+          <span class="entry-date">[2025 – Present]</span>
+        </div>
+        <!-- EDIT: supervisor, lab, or department -->
+        <p class="entry-sub">[Research Assistant] · [Lab, department, or supervising professor]</p>
+        <p>[What the project studies, your specific contribution, and the current status.]</p>
+        <ul class="tag-row">
+          <li class="tag">[Method or tool]</li>
+          <li class="tag">[Method or tool]</li>
+        </ul>
+        <ul class="project-links">
+          <li><a href="#" data-optional><svg aria-hidden="true" focusable="false"><use href="#i-link"/></svg> Project page</a></li>
+        </ul>
+      </div>
+      <!-- END OF BLOCK ================================================== -->
+
+      <div class="card">
+        <h3>Conferences and presentations</h3>
+        <!-- EDIT: delete this card if it does not apply -->
+        <ul class="bullets">
+          <li>[Presentation title] — [Conference or symposium], [Month Year]</li>
+          <li>[Poster title] — [Event], [Month Year]</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PUBLICATIONS  (optional)
+     Add  hidden  to the section tag if you have none.
+     Only list work that is genuinely published or in review.
+     ================================================================ -->
+<section class="section" id="publications">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Publications</h2>
+      <p class="section-note">Peer-reviewed and published work.</p>
+    </div>
+
+    <ul class="pub-list">
+      <!-- COPY THIS BLOCK for another publication ======================= -->
+      <li>
+        <!-- EDIT: paper title -->
+        <p class="pub-title">[Title of the Paper]</p>
+        <!-- EDIT: authors, with your own name in bold -->
+        <p class="pub-authors">[Author, A.], <strong>[Your Name]</strong>, [Author, B.]</p>
+        <!-- EDIT: journal or conference, volume, pages, year -->
+        <p class="pub-venue">[Journal or Conference Name], [Volume([Issue])], [pages], [Year]</p>
+        <!-- EDIT: abstract, or delete this line -->
+        <p class="pub-abstract">[Two or three sentences summarising the paper.]</p>
+        <ul class="pub-links">
+          <li><a href="#" data-optional>DOI: [10.xxxx/xxxxx]</a></li>
+          <li><a href="#" data-optional>PDF</a></li>
+          <li><a href="#" data-optional>Publisher page</a></li>
+        </ul>
+      </li>
+      <!-- END OF BLOCK ================================================== -->
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================
+     CERTIFICATIONS AND AWARDS  (optional)
+     ================================================================ -->
+<section class="section" id="credentials">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Certifications and awards</h2>
+      <p class="section-note">Credentials earned and recognition received.</p>
+    </div>
+
+    <div class="grid grid-2">
+
+      <!-- COPY THIS BLOCK for another certification ===================== -->
+      <div class="card cred">
+        <span class="cred-icon" aria-hidden="true"><svg><use href="#i-cert"/></svg></span>
+        <div>
+          <!-- EDIT: certification name, issuer, date -->
+          <h3>[Certification Name]</h3>
+          <p class="meta">[Issuing Organization] · [Month Year]</p>
+          <!-- EDIT: link to the credential, or set href="#" to remove -->
+          <p style="margin:.5rem 0 0"><a href="#" data-optional>View credential</a></p>
+        </div>
+      </div>
+      <!-- END OF BLOCK ================================================== -->
+
+      <div class="card cred">
+        <span class="cred-icon" aria-hidden="true"><svg><use href="#i-award"/></svg></span>
+        <div>
+          <!-- EDIT: award name, organization, date, one line of context -->
+          <h3>[Award or Honor]</h3>
+          <p class="meta">[Organization] · [Month Year]</p>
+          <p style="margin:.5rem 0 0;font-size:.95rem">[One line on what it was for.]</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     VOLUNTEERING AND LEADERSHIP  (optional)
+     ================================================================ -->
+<section class="section" id="involvement">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Leadership and involvement</h2>
+      <p class="section-note">Student organizations, volunteering, and community work.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <!-- COPY THIS BLOCK for another activity ========================== -->
+      <div class="card cred">
+        <span class="cred-icon" aria-hidden="true"><svg><use href="#i-hands"/></svg></span>
+        <div>
+          <!-- EDIT: role and organization -->
+          <h3>[Role] — [Organization or Student Club]</h3>
+          <p class="meta">[Month Year – Present]</p>
+          <ul class="bullets">
+            <li>[What you organised, led, or contributed, and the scale of it.]</li>
+          </ul>
+        </div>
+      </div>
+      <!-- END OF BLOCK ================================================== -->
+
+      <div class="card cred">
+        <span class="cred-icon" aria-hidden="true"><svg><use href="#i-hands"/></svg></span>
+        <div>
+          <h3>[Volunteer Role] — [Organization]</h3>
+          <p class="meta">[Year]</p>
+          <ul class="bullets">
+            <li>[Contribution and result.]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     RESUME
+     The page works whether or not assets/resume.pdf exists.
+     ================================================================ -->
+<section class="section" id="resume">
+  <div class="wrap">
+    <div class="panel">
+      <h2>Resume</h2>
+      <!-- EDIT: mention the version date so readers know it is current -->
+      <p class="section-note" style="margin-bottom:1.4rem">One page, updated [Month Year].</p>
+      <div class="btn-row" style="margin-top:0">
+        <!-- EDIT: keep the file at assets/resume.pdf, or change both links below -->
+        <a class="btn btn-primary" href="assets/resume.pdf" download>
+          <svg aria-hidden="true" focusable="false"><use href="#i-download"/></svg> Download resume
+        </a>
+        <a class="btn btn-ghost" href="assets/resume.pdf" target="_blank" rel="noopener">
+          <svg aria-hidden="true" focusable="false"><use href="#i-eye"/></svg> View resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CONTACT
+     No backend, no form. A mailto link is more reliable and reaches
+     you directly. If you prefer a form, replace the email button with
+     a link to a hosted form (Google Forms, Formspree, Tally).
+     ================================================================ -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="panel contact-grid">
+      <div>
+        <h2>Interested in connecting?</h2>
+        <p>Feel free to reach out about internships, employment, research, projects, or collaboration. I read every message and reply within a few days.</p>
+        <div class="btn-row">
+          <!-- EDIT: your email address appears twice here -->
+          <a class="btn btn-primary" href="mailto:you@example.com?subject=Hello%20from%20your%20website">
+            <svg aria-hidden="true" focusable="false"><use href="#i-mail"/></svg> Email me
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener" data-optional>
+            <svg aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg> Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <ul class="contact-list">
+          <!-- EDIT: contact details. Delete any line you do not want public. -->
+          <li>
+            <a href="mailto:you@example.com"><svg aria-hidden="true" focusable="false"><use href="#i-mail"/></svg> you@example.com</a>
+            <button class="copy-btn" type="button" data-copy="you@example.com">Copy</button>
+          </li>
+          <li><a href="tel:+11234567890"><svg aria-hidden="true" focusable="false"><use href="#i-phone"/></svg> [+1 (123) 456-7890]</a></li>
+          <li><span><svg aria-hidden="true" focusable="false"><use href="#i-pin"/></svg> [City, State]</span></li>
+        </ul>
+
+        <!-- EDIT: profile links. Set href to "#" on any you do not use and it
+             is removed automatically — no empty icons appear. -->
+        <ul class="social-row">
+          <li><a class="social" href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener" data-optional aria-label="LinkedIn"><svg aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a></li>
+          <li><a class="social" href="https://github.com/yourusername" target="_blank" rel="noopener" data-optional aria-label="GitHub"><svg aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a></li>
+          <li><a class="social" href="#" target="_blank" rel="noopener" data-optional aria-label="Google Scholar"><svg aria-hidden="true" focusable="false"><use href="#i-scholar"/></svg></a></li>
+          <li><a class="social" href="#" target="_blank" rel="noopener" data-optional aria-label="ORCID"><svg aria-hidden="true" focusable="false"><use href="#i-orcid"/></svg></a></li>
+          <li><a class="social" href="#" target="_blank" rel="noopener" data-optional aria-label="ResearchGate"><svg aria-hidden="true" focusable="false"><use href="#i-rg"/></svg></a></li>
+          <li><a class="social" href="#" target="_blank" rel="noopener" data-optional aria-label="X"><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg></a></li>
+          <li><a class="social" href="#" target="_blank" rel="noopener" data-optional aria-label="Personal portfolio"><svg aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <!-- EDIT: your name -->
+    <span>&copy; <span id="year">2026</span> [Student Name]</span>
+    <span>Personal website. Not operated by or affiliated with Pacific States University.</span>
+    <a class="top-link" href="#home">Back to top</a>
+  </div>
+</footer>
+
+<script>
+/* ===================================================================
+   JAVASCRIPT
+   You do not need to edit anything below this line. It handles the
+   theme toggle, the mobile menu, the active nav link, hiding empty
+   sections and unused links, and image fallbacks.
+   =================================================================== */
+(function () {
+  "use strict";
+
+  var root = document.documentElement;
+
+  /* --- 1. Light / dark theme -------------------------------------- */
+  var STORE_KEY = "psu-portfolio-theme";
+  var themeBtn  = document.getElementById("theme-toggle");
+
+  function applyTheme(mode) {
+    root.setAttribute("data-theme", mode);
+    var dark = mode === "dark";
+    if (themeBtn) {
+      themeBtn.setAttribute("aria-pressed", String(dark));
+      themeBtn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    }
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", dark ? "#09141E" : "#F1F4F7");
+  }
+
+  applyTheme(root.getAttribute("data-theme") || "light");
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try { localStorage.setItem(STORE_KEY, next); } catch (e) {}
+    });
+  }
+
+  /* Follow the system setting until the visitor picks a theme here. */
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var onSystemChange = function (e) {
+      var saved = null;
+      try { saved = localStorage.getItem(STORE_KEY); } catch (err) {}
+      if (!saved) applyTheme(e.matches ? "dark" : "light");
+    };
+    if (mq.addEventListener) mq.addEventListener("change", onSystemChange);
+    else if (mq.addListener) mq.addListener(onSystemChange);
+  }
+
+  /* --- 2. Mobile menu --------------------------------------------- */
+  var menuBtn  = document.getElementById("menu-toggle");
+  var navList  = document.getElementById("nav-list");
+  var isMobile = function () { return window.matchMedia("(max-width: 920px)").matches; };
+
+  function setMenu(open) {
+    if (!navList || !menuBtn) return;
+    navList.setAttribute("data-open", String(open));
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menuBtn.innerHTML = open
+      ? '<svg aria-hidden="true" focusable="false"><use href="#i-close"/></svg>'
+      : '<svg aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>';
+  }
+
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      setMenu(navList.getAttribute("data-open") !== "true");
+    });
+  }
+
+  if (navList) {
+    navList.addEventListener("click", function (e) {
+      if (e.target.closest("a") && isMobile()) setMenu(false);
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && navList && navList.getAttribute("data-open") === "true") {
+      setMenu(false);
+      if (menuBtn) menuBtn.focus();
+    }
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!navList || navList.getAttribute("data-open") !== "true") return;
+    if (!e.target.closest(".nav-inner")) setMenu(false);
+  });
+
+  window.addEventListener("resize", function () {
+    if (!isMobile()) setMenu(false);
+  });
+
+  /* --- 3. Remove links the student did not fill in ------------------
+     Any link marked data-optional with href="#" or an empty href is
+     taken out, along with its list item. Empty link rows are removed
+     so no stray spacing is left behind.                              */
+  var optional = document.querySelectorAll("a[data-optional]");
+  Array.prototype.forEach.call(optional, function (a) {
+    var href = (a.getAttribute("href") || "").trim();
+    if (href === "" || href === "#") {
+      var li = a.closest("li");
+      (li || a).remove();
+    }
+  });
+
+  var linkRows = document.querySelectorAll(".project-links, .pub-links, .social-row");
+  Array.prototype.forEach.call(linkRows, function (row) {
+    if (row.children.length === 0) row.remove();
+  });
+
+  /* --- 4. Hide sections with no content, and their nav links --------
+     A section is hidden when its markup carries the hidden attribute
+     or when every content list inside it is empty.                   */
+  var sections = document.querySelectorAll("main section[id]");
+
+  Array.prototype.forEach.call(sections, function (section) {
+    var holders = section.querySelectorAll(".grid, .timeline, .pub-list");
+    if (holders.length) {
+      var hasContent = Array.prototype.some.call(holders, function (h) {
+        return h.children.length > 0;
+      });
+      if (!hasContent) section.hidden = true;
+    }
+    if (section.hidden) {
+      var link = document.querySelector('.nav-links a[href="#' + section.id + '"]');
+      if (link) {
+        var li = link.closest("li");
+        (li || link).remove();
+      }
+    }
+  });
+
+  /* --- 5. Active section in the navigation ------------------------- */
+  var navLinks = document.querySelectorAll(".nav-links a");
+  var targets  = [];
+
+  Array.prototype.forEach.call(navLinks, function (link) {
+    var el = document.querySelector(link.getAttribute("href"));
+    if (el) targets.push(el);
+  });
+
+  function setCurrent(id) {
+    Array.prototype.forEach.call(navLinks, function (link) {
+      if (link.getAttribute("href") === "#" + id) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+  }
+
+  if ("IntersectionObserver" in window && targets.length) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setCurrent(entry.target.id);
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+    targets.forEach(function (t) { observer.observe(t); });
+  }
+
+  /* --- 6. Image fallbacks ------------------------------------------
+     If a photo is missing, a clean placeholder takes its place
+     instead of a broken image icon.                                  */
+  function replaceWithPlaceholder(img) {
+    var ph = document.createElement("div");
+    ph.className = "ph";
+    ph.setAttribute("role", "img");
+
+    if (img.getAttribute("data-fallback") === "mono") {
+      var initials = img.getAttribute("data-initials") || "";
+      ph.setAttribute("aria-label", img.getAttribute("alt") || "Profile photo");
+      ph.innerHTML = '<span class="ph-mono">' + initials + "</span>";
+    } else {
+      ph.setAttribute("aria-label", img.getAttribute("alt") || "Image");
+      ph.innerHTML = '<svg width="26" height="26" style="color:var(--muted)" aria-hidden="true" focusable="false"><use href="#i-image"/></svg>';
+    }
+    if (img.parentNode) img.parentNode.replaceChild(ph, img);
+  }
+
+  var fallbackImages = document.querySelectorAll("img[data-fallback]");
+  Array.prototype.forEach.call(fallbackImages, function (img) {
+    img.addEventListener("error", function () { replaceWithPlaceholder(img); });
+    if (img.complete && img.naturalWidth === 0) replaceWithPlaceholder(img);
+  });
+
+  /* --- 7. Copy email ----------------------------------------------- */
+  var copyButtons = document.querySelectorAll(".copy-btn");
+  Array.prototype.forEach.call(copyButtons, function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.getAttribute("data-copy") || "";
+      var done = function () {
+        var original = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = original; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {});
+      }
+    });
+  });
+
+  /* --- 8. Footer year ----------------------------------------------- */
+  var year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
